@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Campify</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Dashboard Navigation -->
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <i class="fas fa-university"></i>
+                    <span class="logo-text">Campify</span>
+                </a>
+            </div>
+            
+            <div class="nav-search">
+                <input type="text" placeholder="Search for courses, groups, or people..." id="globalSearch">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="nav-user">
+                <div class="user-menu" id="userMenu">
+                    <div class="user-avatar" id="userAvatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="profile.html" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+                        <a href="settings.html" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <div class="notification-bell" id="notificationBell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count" id="notificationCount">3</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <div class="user-info" id="userInfo">
+                    <div class="user-avatar-large">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <h3 class="user-name" id="userName">Loading...</h3>
+                        <p class="user-university" id="userUniversity">Loading...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#chat" class="nav-item active" data-section="chat">
+                    <i class="fas fa-comments"></i>
+                    <span>Campus Chat</span>
+                </a>
+                <a href="#study-groups" class="nav-item" data-section="study-groups">
+                    <i class="fas fa-users"></i>
+                    <span>Study Groups</span>
+                    <span class="badge" id="groupsBadge">5</span>
+                </a>
+                <a href="#courses" class="nav-item" data-section="courses">
+                    <i class="fas fa-book"></i>
+                    <span>My Courses</span>
+                </a>
+                <a href="#events" class="nav-item" data-section="events">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Campus Events</span>
+                    <span class="badge" id="eventsBadge">2</span>
+                </a>
+                <a href="#housing" class="nav-item" data-section="housing">
+                    <i class="fas fa-home"></i>
+                    <span>Housing</span>
+                </a>
+                <a href="#resources" class="nav-item" data-section="resources">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Resources</span>
+                </a>
+                <a href="#announcements" class="nav-item" data-section="announcements">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Announcements</span>
+                    <span class="badge" id="announcementsBadge">1</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="online-status">
+                    <div class="status-indicator online"></div>
+                    <span id="onlineCount">2,847 students online</span>
+                </div>
+                <button class="btn btn-primary btn-small" id="createGroupBtn">
+                    <i class="fas fa-plus"></i> New Group
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div id="appp-root"></div>
+            <!-- Chat Section -->
+            <section class="dashboard-section active" id="chatSection">
+                <div class="section-header">
+                    <h2>Campus Chat</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-secondary" id="createRoomBtn">
+                            <i class="fas fa-plus"></i> New Chat
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="chat-container">
+                    <!-- Chat Rooms List -->
+                    <div class="chat-rooms">
+                        <div class="rooms-header">
+                            <h3>Chat Rooms</h3>
+                            <button class="btn-icon" id="refreshRoomsBtn">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="rooms-list" id="roomsList">
+                            <!-- Rooms will be loaded here -->
+                            <div class="room-item active" data-room="general">
+                                <div class="room-icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="room-info">
+                                    <h4 class="room-name">General Campus Chat</h4>
+                                    <p class="room-last-message">Welcome to Campify!</p>
+                                </div>
+                                <div class="room-meta">
+                                    <span class="room-time">2 min ago</span>
+                                    <span class="room-unread">3</span>
+                                </div>
+                            </div>
+                            
+                            <div class="room-item" data-room="cs101">
+                                <div class="room-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="room-info">
+                                    <h4 class="room-name">CS101 Study Group</h4>
+                                    <p class="room-last-message">Anyone free to study?</p>
+                                </div>
+                                <div class="room-meta">
+                                    <span class="room-time">5 min ago</span>
+                                    <span class="room-unread">1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chat Messages -->
+                    <div class="chat-messages">
+                        <div class="messages-header">
+                            <div class="current-room-info">
+                                <h3 id="currentRoomName">General Campus Chat</h3>
+                                <p id="currentRoomMembers">1,250 members online</p>
+                            </div>
+                            <div class="room-actions">
+                                <button class="btn-icon" id="roomInfoBtn">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="btn-icon" id="roomSettingsBtn">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="messages-container" id="messagesContainer">
+                            <!-- Messages will be loaded here -->
+                            <div class="message-day">
+                                <span class="day-divider">Today</span>
+                            </div>
+                            
+                            <div class="message received">
+                                <div class="message-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-sender">Alex Johnson</div>
+                                    <div class="message-text">Welcome to Campify Campus Chat! Feel free to introduce yourself and connect with other students.</div>
+                                    <div class="message-time">10:30 AM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="message sent">
+                                <div class="message-content">
+                                    <div class="message-text">Hi everyone! I'm Sarah, a CS major. Looking for study partners for CS101!</div>
+                                    <div class="message-time">10:32 AM</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="message-input-container">
+                            <div class="typing-indicator" id="typingIndicator">
+                                <span id="typingUsers"></span> is typing...
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="text" 
+                                       placeholder="Type your message here..." 
+                                       id="messageInput"
+                                       autocomplete="off">
+                                <div class="input-actions">
+                                    <button class="btn-icon" id="attachFileBtn">
+                                        <i class="fas fa-paperclip"></i>
+                                    </button>
+                                    <button class="btn-icon" id="sendMessageBtn">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chat Members -->
+                    <div class="chat-members">
+                        <div class="members-header">
+                            <h3>Online Members</h3>
+                            <span class="online-count" id="roomOnlineCount">45</span>
+                        </div>
+                        
+                        <div class="members-list" id="membersList">
+                            <!-- Members will be loaded here -->
+                            <div class="member-item online">
+                                <div class="member-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="member-info">
+                                    <h4 class="member-name">Alex Johnson</h4>
+                                    <p class="member-major">Computer Science</p>
+                                </div>
+                            </div>
+                            
+                            <div class="member-item online">
+                                <div class="member-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="member-info">
+                                    <h4 class="member-name">Sarah Chen</h4>
+                                    <p class="member-major">Engineering</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Study Groups Section -->
+            <section class="dashboard-section" id="studyGroupsSection">
+                <div class="section-header">
+                    <h2>Study Groups</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="createStudyGroupBtn">
+                            <i class="fas fa-plus"></i> Create Group
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="study-groups-container" id="studyGroupsContainer">
+                    <!-- Study groups will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Other sections would follow similar pattern -->
+            
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+                <div class="spinner"></div>
+                <p>Loading campus data...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Create Group Modal -->
+    <div class="modal" id="createGroupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Study Group</h2>
+                <button class="modal-close" id="closeGroupModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="createGroupForm">
+                    <div class="form-group">
+                        <label for="groupName">Group Name</label>
+                        <input type="text" id="groupName" placeholder="e.g., CS101 Study Group" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseCode">Course Code</label>
+                        <input type="text" id="courseCode" placeholder="e.g., CS101" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseName">Course Name</label>
+                        <input type="text" id="courseName" placeholder="e.g., Introduction to Computer Science" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="groupDescription">Description</label>
+                        <textarea id="groupDescription" placeholder="Describe what this group is about..." rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="groupPrivacy">Privacy</label>
+                        <select id="groupPrivacy">
+                            <option value="public">Public - Anyone can join</option>
+                            <option value="private">Private - Invite only</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Create Group</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Panel -->
+    <div class="notifications-panel" id="notificationsPanel">
+        <div class="notifications-header">
+            <h3>Notifications</h3>
+            <button class="btn-icon" id="closeNotifications">&times;</button>
+        </div>
+        <div class="notifications-list" id="notificationsList">
+            <!-- Notifications will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Socket Status Indicator -->
+    <div class="socket-status" id="socketStatus">
+        <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span class="status-text">Connecting to campus network...</span>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="js/appp.js"></script>
+</body>
+</html>

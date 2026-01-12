@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Campify</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .navbar {
+            background: white;
+            padding: 15px 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .settings-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .settings-header {
+            margin-bottom: 40px;
+        }
+
+        .settings-header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .settings-header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .settings-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            flex: 1;
+        }
+
+        .setting-label h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .setting-label p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .toggle {
+            width: 50px;
+            height: 28px;
+            background: #ddd;
+            border-radius: 14px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        .toggle.active {
+            background: #667eea;
+        }
+
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: left 0.3s ease;
+        }
+
+        .toggle.active::after {
+            left: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .password-requirements {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .password-requirements li {
+            margin-bottom: 5px;
+        }
+
+        .danger-zone {
+            background: #ffe6e6;
+            border: 2px solid #e74c3c;
+        }
+
+        .danger-zone .section-title {
+            border-bottom-color: #e74c3c;
+        }
+
+        @media (max-width: 600px) {
+            .setting-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="dashboard.html" class="navbar-brand">
+            <i class="fas fa-university"></i> Campify
+        </a>
+        <div>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html" style="margin-left: 20px;">Profile</a>
+            <a href="#" id="logoutBtn" style="margin-left: 20px;">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Settings Container -->
+    <div class="settings-container">
+        <!-- Header -->
+        <div class="settings-header">
+            <h1>Settings</h1>
+            <p>Manage your account and application preferences</p>
+        </div>
+
+        <!-- Messages -->
+        <div id="successMessage" class="message success" style="display: none;"></div>
+        <div id="errorMessage" class="message error" style="display: none;"></div>
+
+        <!-- Email Preferences -->
+        <div class="settings-section">
+            <h2 class="section-title">Email Preferences</h2>
+            
+            <div class="setting-item">
+                <div class="setting-label">
+                    <h3>Messages & Chat</h3>
+                    <p>Get notified about new messages</p>
+                </div>
+                <div class="toggle active" onclick="toggleNotification(this)"></div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-label">
+                    <h3>Study Groups</h3>
+                    <p>Get updates about study groups you joined</p>
+                </div>
+                <div class="toggle active" onclick="toggleNotification(this)"></div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-label">
+                    <h3>Events & Announcements</h3>
+                    <p>Be notified about campus events and announcements</p>
+                </div>
+                <div class="toggle" onclick="toggleNotification(this)"></div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-label">
+                    <h3>Weekly Digest</h3>
+                    <p>Receive a weekly summary of activity</p>
+                </div>
+                <div class="toggle" onclick="toggleNotification(this)"></div>
+            </div>
+        </div>
+
+        <!-- Privacy Settings -->
+        <div class="settings-section">
+            <h2 class="section-title">Privacy Settings</h2>
+            
+            <div class="setting-item">
+                <div class="setting-label">
+                    <h3>Profile Visibility</h3>
+                    <p>Let other students see your profile</p>
+                </div>
+                <select style="width: auto;">
+                    <option>Public</option>
+                    <option>Friends Only</option>
+                    <option>Private</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-label">
+                    <h3>Online Status</h3>
+                    <p>Show when you're online</p>
+                </div>
+                <div class="toggle active" onclick="toggleNotification(this)"></div>
+            </div>
+        </div>
+
+        <!-- Password Settings -->
+        <div class="settings-section">
+            <h2 class="section-title">Change Password</h2>
+            
+            <form id="changePasswordForm">
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" name="current_password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" name="new_password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirm_password" required>
+                </div>
+
+                <div class="password-requirements">
+                    <strong>Password Requirements:</strong>
+                    <ul>
+                        <li>At least 8 characters long</li>
+                        <li>Contains at least one uppercase letter</li>
+                        <li>Contains at least one number</li>
+                        <li>Contains at least one special character</li>
+                    </ul>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">Change Password</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="settings-section danger-zone">
+            <h2 class="section-title">Danger Zone</h2>
+            
+            <div class="setting-item">
+                <div class="setting-label">
+                    <h3>Delete Account</h3>
+                    <p>Permanently delete your account and all associated data</p>
+                </div>
+            </div>
+
+            <button class="btn btn-danger" id="deleteAccountBtn">Delete Account</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/auth.js"></script>
+    <script>
+        // Check authentication
+        window.addEventListener('load', () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Toggle notification
+        function toggleNotification(element) {
+            element.classList.toggle('active');
+        }
+
+        // Handle password change
+        document.getElementById('changePasswordForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (newPassword !== confirmPassword) {
+                showError('Passwords do not match');
+                return;
+            }
+
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch('http://localhost:5000/api/auth/change-password', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        current_password: document.getElementById('currentPassword').value,
+                        new_password: newPassword
+                    })
+                });
+
+                if (!response.ok) throw new Error('Failed to change password');
+
+                showSuccess('Password changed successfully!');
+                document.getElementById('changePasswordForm').reset();
+
+            } catch (error) {
+                showError('Failed to change password: ' + error.message);
+            }
+        });
+
+        // Delete account
+        document.getElementById('deleteAccountBtn').addEventListener('click', () => {
+            if (confirm('Are you sure you want to delete your account? This cannot be undone.')) {
+                localStorage.removeItem('token');
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Show success/error messages
+        function showSuccess(message) {
+            const el = document.getElementById('successMessage');
+            el.textContent = message;
+            el.style.display = 'block';
+            setTimeout(() => el.style.display = 'none', 3000);
+        }
+
+        function showError(message) {
+            const el = document.getElementById('errorMessage');
+            el.textContent = message;
+            el.style.display = 'block';
+            setTimeout(() => el.style.display = 'none', 3000);
+        }
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('token');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
