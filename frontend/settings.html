@@ -398,10 +398,10 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
+   
     <script src="js/auth.js"></script>
     <script>
-        // Check authentication
+     
         window.addEventListener('load', () => {
             const token = localStorage.getItem('token');
             if (!token) {
@@ -409,12 +409,12 @@
             }
         });
 
-        // Toggle notification
+        
         function toggleNotification(element) {
             element.classList.toggle('active');
         }
 
-        // Handle password change
+     
         document.getElementById('changePasswordForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -450,7 +450,7 @@
             }
         });
 
-        // Delete account
+        
         document.getElementById('deleteAccountBtn').addEventListener('click', () => {
             if (confirm('Are you sure you want to delete your account? This cannot be undone.')) {
                 localStorage.removeItem('token');
@@ -458,7 +458,7 @@
             }
         });
 
-        // Show success/error messages
+       
         function showSuccess(message) {
             const el = document.getElementById('successMessage');
             el.textContent = message;
@@ -473,7 +473,7 @@
             setTimeout(() => el.style.display = 'none', 3000);
         }
 
-        // Logout
+        
         document.getElementById('logoutBtn').addEventListener('click', () => {
             localStorage.removeItem('token');
             window.location.href = 'index.html';
