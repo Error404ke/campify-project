@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@
 }
 
 :root {
-    /* Green theme */
+   
     --primary-color: #1fa46a; /* lively green */
     --secondary-color: #127a4a; /* darker green */
     --accent-color: #7fe4b9; /* mint accent */
@@ -14,7 +14,7 @@
     --warning-color: #f59e0b;
     --danger-color: #ef4444;
 
-    /* Background & text */
+   
     --light-color: #f4fbf7; /* soft mint background */
     --dark-color: #103523;  /* deep green text */
     --gray-color: #6c757d;
@@ -23,7 +23,7 @@
     --box-shadow: 0 6px 18px rgba(5, 60, 30, 0.08);
     --transition: all 0.3s ease;
 
-    /* Live background controls */
+   
     --live-gradient-duration: 18s;
     --live-gradient-blend: 0.85;
 }
@@ -41,7 +41,7 @@ body {
     padding: 0 20px;
 }
 
-/* Typography */
+
 h1, h2, h3, h4 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -57,7 +57,7 @@ h4 { font-size: 1.25rem; }
     color: var(--primary-color);
 }
 
-/* Buttons */
+
 .btn {
     display: inline-block;
     padding: 12px 24px;
