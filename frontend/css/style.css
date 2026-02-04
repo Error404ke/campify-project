@@ -464,7 +464,7 @@ body::after {
     box-shadow: 0 12px 40px rgba(6, 51, 30, 0.18);
 }
 
-/* Socket/connection status dot */
+
 .status-dot {
     width: 10px;
     height: 10px;
@@ -479,7 +479,6 @@ body::after {
 .status-dot.disconnected { background: var(--warning-color); }
 .status-dot.error { background: var(--danger-color); }
 
-/* Update primary button styles to green theme */
 .btn-primary {
     background-color: var(--primary-color);
     color: white;
@@ -489,10 +488,10 @@ body::after {
     background-color: var(--secondary-color);
 }
 
-/* Green accent for highlights */
+
 .highlight { color: var(--primary-color); }
 
-/* Modals */
+
 .modal {
     display: none;
     position: fixed;
@@ -687,7 +686,7 @@ body::after {
     text-decoration: underline;
 }
 
-/* Socket Status Indicator */
+
 .socket-status {
     position: fixed;
     bottom: 20px;
@@ -727,7 +726,7 @@ body::after {
     font-weight: 500;
 }
 
-/* Notifications */
+
 .notification {
     position: fixed;
     top: 100px;
@@ -775,7 +774,6 @@ body::after {
     font-size: 0.9rem;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
         display: none;
