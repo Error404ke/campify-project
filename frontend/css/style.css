@@ -7,16 +7,16 @@
 
 :root {
    
-    --primary-color: #1fa46a; /* lively green */
-    --secondary-color: #127a4a; /* darker green */
-    --accent-color: #7fe4b9; /* mint accent */
+    --primary-color: #1fa46a; 
+    --secondary-color: #127a4a; 
+    --accent-color: #7fe4b9; 
     --success-color: #27ae60;
     --warning-color: #f59e0b;
     --danger-color: #ef4444;
 
    
-    --light-color: #f4fbf7; /* soft mint background */
-    --dark-color: #103523;  /* deep green text */
+    --light-color: #f4fbf7; 
+    --dark-color: #103523;  
     --gray-color: #6c757d;
 
     --border-radius: 8px;
@@ -104,7 +104,7 @@ h4 { font-size: 1.25rem; }
     width: 100%;
 }
 
-/* Navigation */
+
 .navbar {
     background-color: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -194,7 +194,7 @@ h4 { font-size: 1.25rem; }
     color: var(--dark-color);
 }
 
-/* Hero Section */
+
 .hero {
     padding: 150px 0 100px;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -328,7 +328,7 @@ h4 { font-size: 1.25rem; }
     50% { transform: translateY(-10px); }
 }
 
-/* Features Section */
+
 .features {
     padding: 100px 0;
     background-color: white;
