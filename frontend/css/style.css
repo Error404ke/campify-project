@@ -406,7 +406,6 @@ h4 { font-size: 1.25rem; }
     font-weight: 600;
 }
 
-/* Live animated background: gradient + floating soft blobs */
 body::before {
     content: '';
     position: fixed;
@@ -446,7 +445,7 @@ body::after {
     100% { background-position: 10% 20%, 80% 70%; }
 }
 
-/* Respect reduce motion */
+
 @media (prefers-reduced-motion: reduce) {
     body::before, body::after, * {
         animation: none !important;
@@ -454,7 +453,7 @@ body::after {
     }
 }
 
-/* Make the auth card subtly lift to emphasize foreground */
+
 .auth-card {
     transition: transform 0.35s var(--transition), box-shadow 0.35s var(--transition);
 }
