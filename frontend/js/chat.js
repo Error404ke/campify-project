@@ -33,13 +33,13 @@ class ChatManager {
             console.log('Joined room:', data.room_id);
         });
         
-        // Room left
+        
         this.socket.on('room_left', (data) => {
             console.log('Left room:', data.room_id);
         });
     }
     
-    // Join a chat room
+    
     joinRoom(roomId) {
         if (!this.socket || !this.socket.connected) {
             console.error('Socket not connected');
