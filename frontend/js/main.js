@@ -10,7 +10,7 @@ class CampifyApp {
     }
     
     async init() {
-        // Check authentication status
+        // authentication status
         await this.checkAuth();
         
         // Initialize event listeners
@@ -22,7 +22,7 @@ class CampifyApp {
         // Initialize socket connection
         this.initSocket();
         
-        // Update online users count
+        // Update online users
         this.updateStats();
     }
     
@@ -101,7 +101,7 @@ class CampifyApp {
             });
         }
         
-        // Smooth scrolling for anchor links
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
