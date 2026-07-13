@@ -387,7 +387,7 @@
                 const data = await response.json();
                 const user = data.user;
 
-                // Populate profile
+                
                 document.getElementById('profileName').textContent = user.name;
                 document.getElementById('profileUniversity').textContent = user.university;
                 document.getElementById('profileEmail').value = user.email;
