@@ -205,6 +205,4 @@ MAIL_PASSWORD
 **Socket.IO connection fails:**
 - Ensure WebSocket support enabled
 - Check firewall isn't blocking port 5000
-- Verify auth token is valid
-
-Campify aims to enhance student life by creating a connected, engaged campus community where students can learn, grow, and build lasting relationships.
+- Verify auth token is 
