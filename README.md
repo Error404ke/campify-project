@@ -200,35 +200,11 @@ MAIL_SERVER=smtp.gmail.com
 MAIL_PORT=587
 MAIL_USE_TLS=True
 MAIL_USERNAME=your-email@gmail.com
-MAIL_PASSWORD=your-app-password
-```
-
-## 🐛 Troubleshooting
-
-**Backend won't start:**
-- Ensure MongoDB is running
-- Check `.env` file exists and is valid
-- Verify Python 3.11+ installed
-
-**Frontend can't connect to backend:**
-- Check `API_BASE_URL` in dashboard.js
-- Verify backend is running on port 5000
-- Check CORS_ORIGINS environment variable
-- Open browser console (F12) for errors
+MAIL_PASSWORD
 
 **Socket.IO connection fails:**
 - Ensure WebSocket support enabled
 - Check firewall isn't blocking port 5000
 - Verify auth token is valid
-
-## 📧 Support
-
-For issues or questions, check the code comments or review the documentation in each module.
-
-## 📄 License
-
-MIT License
-
-## 🎓 Built for Campus Communities
 
 Campify aims to enhance student life by creating a connected, engaged campus community where students can learn, grow, and build lasting relationships.
