@@ -42,51 +42,6 @@ python -m venv venv
 venv\Scripts\activate  # Windows
 source venv/bin/activate  # macOS/Linux
 pip install -r requirements.txt
-```
-
-### Configure Environment
-Create a `.env` file in the `backend/` directory:
-```
-FLASK_ENV=development
-SECRET_KEY=your-secret-key-here
-JWT_SECRET_KEY=your-jwt-secret-key-here
-MONGO_URI=mongodb://localhost:27017/
-MONGO_DB_NAME=campify_db
-CORS_ORIGINS=http://localhost:8080,http://127.0.0.1:8080
-```
-
-### Run Backend
-```bash
-python app.py
-# Server runs on http://localhost:5000
-```
-
-### Frontend Setup
-```bash
-cd frontend
-# No build step needed for development
-# Use live-server or any local server
-live-server
-# Opens on http://127.0.0.1:8080
-```
-
-## 🚀 Production Deployment
-
-### Backend Deployment (Recommended: Railway, Render, or Heroku)
-
-**Environment Variables to set:**
-- `FLASK_ENV=production`
-- `SECRET_KEY` - Generate a strong random key
-- `JWT_SECRET_KEY` - Generate a strong random key
-- `MONGO_URI` - Your MongoDB Atlas connection string
-- `MONGO_DB_NAME=campify_db`
-- `CORS_ORIGINS=https://yourdomain.com`
-
-**Deploy to Railway:**
-1. Push code to GitHub
-2. Connect to Railway.app
-3. Add MongoDB addon
-4. Set environment variables
 5. Deploy!
 
 **Deploy to Render:**
